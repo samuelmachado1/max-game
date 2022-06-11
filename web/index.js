@@ -34,7 +34,23 @@ class Player {
   }
 }
 
+class Platform {
+  constructor() {
+    this.positions = {
+      x: 250,
+      y: 670
+    }
+    this.width = 100;
+    this.height = 100;
+  }
+  draw() {
+    myContext.fillStyle = 'blue';
+    myContext.fillRect(this.positions.x, this.positions.y, this.width, this.height);
+  }
+}
+
 const player = new Player();
+const plataform = new Platform();
 const keys = {
   right: {
     pressed: false,
@@ -48,6 +64,7 @@ function animate() {
   requestAnimationFrame(animate);
   myContext.clearRect(0, 0, canvas.width, canvas.height);
   player.update();
+  plataform.draw();
 
   if (keys.right.pressed) {
     player.velocity.x = 3;
